@@ -1,0 +1,20 @@
+{
+  "name": "gantt-d3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo index.js:bundle.js --live --open -- -t [ babelify --presets [ env ] --sourceType module ]"
+  },
+  "author": "Tuan Nguyen <vdtn359@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "babelify": "8.0.0",
+    "budo": "11.2.0"
+  },
+  "dependencies": {
+    "d3": "4.13.0"
+  }
+}
