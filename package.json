@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "budo index.js:bundle.js --live --open -- -t [ babelify --presets [ env ] --sourceType module ]"
+    "start": "budo index.js:bundle.js --live --open -- -t [ babelify --presets [ env ] --sourceType module ]",
+    "bundle": "mkdir -p dist && browserify index.js -t [ babelify --presets [ env ] --sourceType module ] | uglifyjs > dist/bundle.js && cp index.html gantt.css dist/",
+    "upload": "surge dist"
   },
   "author": "Tuan Nguyen <vdtn359@gmail.com>",
   "license": "ISC",
@@ -12,7 +14,9 @@
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
     "babelify": "8.0.0",
-    "budo": "11.2.0"
+    "budo": "11.2.0",
+    "surge": "0.20.1",
+    "uglify-js": "3.3.21"
   },
   "dependencies": {
     "d3": "4.13.0"
