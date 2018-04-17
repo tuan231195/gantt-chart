@@ -65,11 +65,11 @@ export class Calendar {
 		return this;
 	}
 
-	startDate(){
+	startDate() {
 		return this._days[0];
 	}
 
-	endDate(){
+	endDate() {
 		return this._days[this._days[length - 1]];
 	}
 
@@ -85,81 +85,40 @@ export class Calendar {
 		const today = new Date();
 		const daysGroupedByMonth = Calendar.groupDatesByMonth(this._days);
 
-		const widthArray = daysGroupedByMonth.map(
-			d => d.values.length * this._cellWidth
-		);
-
-		const postXArr = daysGroupedByMonth.reduce(
-			(posXArr, month, currentIndex) => {
-				if (currentIndex === 0) {
-					posXArr.push(0);
-				} else {
-					posXArr.push(
-						posXArr[posXArr.length - 1] + widthArray[currentIndex - 1]
-					);
-				}
-				return posXArr;
-			},
-			[]
-		);
-
 		const months = selection
-			.selectAll("g")
+			.selectAll(".month")
 			.data(daysGroupedByMonth)
 			.enter()
-			.append("g")
-			.attr("transform", (d, i) => `translate(${postXArr[i]}, 0)`);
+			.append("div")
+			.attr('class', 'month normal-text')
+			.style('width', monthData => `${monthData.values.length * this._cellWidth}px`);
 
-		months
-			.append("rect")
-			.attr("class", "month")
-			.attr("height", "35")
-			.attr("width", monthData => monthData.values.length * this._cellWidth);
+		months.append("div")
+			  .attr('class', 'month__text')
+			  .style('height', `${this._cellHeight}px`)
+			  .style('line-height', `${this._cellHeight}px`)
+			  .text(month => monthFormat(new Date(month.key)));
 
-		months
-			.append("text")
-			.attr('class', 'normal-text')
-			.attr("x", (d, i) => widthArray[i] / 2)
-			.attr("y", this._cellWidth / 2 + 4)
-			.text(month => monthFormat(new Date(month.key)));
 
 		const daysInMonths = months
-			.selectAll("g")
+			.append('div')
+			.attr('class', 'days')
+			.selectAll(".day")
 			.data(monthData => monthData.values)
 			.enter()
-			.append("g")
-			.attr(
-				"transform",
-				(d, i) => `translate(${this._cellWidth * i}, ${this._cellHeight})`
-			)
+			.append("div")
 			.attr("class", "day")
+			.style('width', `${this._cellWidth}px`)
+			.style("height", `${this._chartHeight + this._cellHeight}px`)
+			.classed("day--weekends", date => date.getDay() === 0 || date.getDay() === 6)
 			.classed('day--today', date => {
 				return d3.timeDay.count(date, today) === 0;
 			});
 
-		daysInMonths
-			.append("rect")
-			.attr("class", "day__column day__cell")
-			.classed("day__column--weekends", date => date.getDay() === 0 || date.getDay() === 6)
-			.attr("width", this._cellWidth)
-			.attr("height", this._cellHeight);
-
-
-		daysInMonths
-			.append("rect")
-			.attr("class", "day__column")
-			.classed("day__column--weekends", date => date.getDay() === 0 || date.getDay() === 6)
-			.attr("width", this._cellWidth)
-			.attr("y", this._cellHeight)
-			.attr("height", this._chartHeight);
-
-
-		daysInMonths
-			.append("text")
-			.attr("x", this._cellWidth / 2)
-			.attr("y", this._cellHeight / 2 + 2)
-			.attr('class', 'normal-text')
-			.text(dayData => dayFormat(dayData));
+		daysInMonths.append('div')
+					.attr('class', 'day__text')
+					.style('height', `${this._cellHeight}px`)
+					.text((date => dayFormat(date)));
 	}
 
 }

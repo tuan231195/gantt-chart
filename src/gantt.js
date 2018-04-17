@@ -1,5 +1,7 @@
 import * as d3 from 'd3';
-import {LineHelper} from "./line-helper";
+
+const lineHeight = 10;
+const lineDistance = 20;
 
 const parseTime = d3.timeParse("%Y-%m-%d");
 
@@ -40,137 +42,82 @@ export class Gantt {
 	draw(selection) {
 		const gantt = this;
 		const today = new Date();
-		this._lineHelper = new LineHelper().startDate(this._startDate).cellWidth(this._cellWidth);
-		const objectWrapper = selection.selectAll(".object-wrapper")
-			.data(this._jobArray)
-			.enter()
-			.append("svg")
-			.attr('class', "object-wrapper")
-			.attr('width', '100%')
-			.attr('height', this._objectHeight)
-			.attr('x', 0)
-			.attr('y', (d, i) => this._objectHeight * i);
 
-		const objects = objectWrapper.append('svg');
+		const objectWrapper = selection.selectAll('.object-wrapper')
+									   .data(this._jobArray)
+									   .enter()
+									   .append('div')
+									   .attr('class', 'object-wrapper')
+									   .style('top', (d, i) => `${this._objectHeight * i}px`)
+									   .style('height', this._objectHeight);
 
-		objects.call(this._lineHelper.drawPlannedLine.bind(this._lineHelper), {
-			start(object) {
-				return object.planned_start;
-			},
-			end(object) {
-				return object.planned_due;
-			}
-		});
+		const cells = objectWrapper.selectAll('.cell')
+								   .data(objectData => objectData.cells)
+								   .enter()
+								   .append('div')
+								   .attr('class', 'cell')
+								   .style('left', cell => `${cell.ganttChartDateOffset * gantt._cellWidth}px`);
 
-		const objectsWithPredictedDates = objects.filter(
-			object => object.predicted_start && object.predicted_due
-		);
+		cells.filter(cell => {
+				 return cell.plannedPredicted && cell.plannedPredicted.plannedType;
+			 })
+			 .append('div')
+			 .attr('class', 'planned')
+			 .style('height', `${lineHeight}px`)
+			 .style('width', `${gantt._cellWidth}px`)
+			 .classed('planned--start', cell => cell.plannedPredicted.plannedType === 'start')
+			 .classed('planned--within', cell => cell.plannedPredicted.plannedType === 'within')
+			 .classed('planned--end', cell => cell.plannedPredicted.plannedType === 'end');
 
-		objectsWithPredictedDates.filter(
-			object =>
-				object.predicted_start.getTime() < object.planned_start.getTime()
-		).call(this._lineHelper.drawPredictedLine.bind(this._lineHelper),
-			{
-				type: 'early', start(object) {
-					return object.predicted_start;
-				}, end(object) {
-					return object.planned_start;
-				}
-			});
+		cells.filter(cell => {
+				 return cell.plannedPredicted && cell.plannedPredicted.predictedType;
+			 })
+			 .append('div')
+			 .attr('class', 'predicted')
+			 .style('width', `${gantt._cellWidth}px`)
+			 .style('top', `${lineHeight / 2 + 0.5}px`)
+			 .classed('predicted--early', cell => cell.plannedPredicted.predictedType === 'early')
+			 .classed('predicted--within', cell => cell.plannedPredicted.predictedType === 'within')
+			 .classed('predicted--late', cell => cell.plannedPredicted.predictedType === 'late');
 
-		objectsWithPredictedDates.filter(
-			object =>
-				!(
-					object.predicted_due.getTime() < object.planned_start.getTime() ||
-					object.predicted_start.getTime() > object.planned_due.getTime()
-				))
-			.call(this._lineHelper.drawPredictedLine.bind(this._lineHelper),
-				{
-					type: 'normal', start(object) {
-						return Math.max(object.predicted_start, object.planned_start);
-					}, end(object) {
-						return Math.min(object.predicted_due, object.planned_due);
-					}
-				});
+		cells.filter(cell => {
+				 return cell.targetActual && cell.targetActual.relativePositionToTargetRange === 'within' && cell.targetActual.relativePositionToActualRange !== 'within';
+			 })
+			 .append('div')
+			 .attr('class', 'target')
+			 .style('height', `${lineHeight}px`)
+			 .style('width', `${gantt._cellWidth}px`)
+			 .style('top', `${lineDistance + lineHeight / 2}px`)
+			 .classed('target--normal', cell => cell.targetActual.relativePositionToActualRange === 'after')
+			 .classed('target--late', cell => cell.targetActual.relativePositionToActualRange === 'before')
+			 .classed('has-border-left', cell => cell.targetActual.borderType === 'start')
+			 .classed('has-border-right', cell => cell.targetActual.borderType === 'end');
 
-		objectsWithPredictedDates.filter(
-			object => object.predicted_due.getTime() > object.planned_due.getTime()
-		).call(this._lineHelper.drawPredictedLine.bind(this._lineHelper),
-			{
-				type: 'late', start(object) {
-					return object.planned_due;
-				}, end(object) {
-					return object.predicted_due;
-				}
-			});
+		cells.filter(cell => {
+				 return cell.targetActual && cell.targetActual.relativePositionToActualRange === 'within';
+			 })
+			 .append('div')
+			 .attr('class', 'actual')
+			 .style('height', `${lineHeight}px`)
+			 .style('width', `${gantt._cellWidth}px`)
+			 .style('top', `${lineDistance + lineHeight / 2}px`)
+			 .classed('actual--normal', cell => cell.targetActual.relativePositionToTargetRange === 'within')
+			 .classed('actual--late', cell => cell.targetActual.relativePositionToTargetRange === 'after')
+			 .classed('actual--early', cell => cell.targetActual.relativePositionToTargetRange === 'before')
+			 .classed('has-border-left', cell => cell.targetActual.borderType === 'start')
+			 .classed('has-border-right', cell => cell.targetActual.borderType === 'end');
 
-		objects.selectAll('.work-log')
-			.data(object => object.days.map(day => ({object, day: parseTime(day)})))
-			.enter().append('g').attr('class', 'work-log')
-			.call(this._lineHelper.fillWorkLog.bind(this._lineHelper));
-
-		objects.filter(
-			object => object.target_start && (object.target_start.getTime() < (object.actual_start || today).getTime()) && (today.getTime() > object.target_start.getTime())
-		).call(this._lineHelper.drawDottedLine.bind(this._lineHelper),
-			{
-				type: 'late', start(object) {
-					return object.target_start;
-				}, end(object) {
-					return object.actual_start || today;
-				}
-			});
-
-		objects.filter(
-			object => object.target_due && (object.actual_start || today).getTime() < today.getTime()
-		).call(this._lineHelper.drawSolidLine.bind(this._lineHelper),
-			{
-				type: 'normal', start(object) {
-					return object.actual_start || today;
-				}, end(object) {
-					return Math.min(object.target_due, object.actual_due || today, today);
-				}
-			});
-
-		objects.filter(
-			object => object.target_due && ((!object.actual_due && today.getTime() < object.target_due.getTime()) || object.actual_due && object.actual_due.getTime() < object.target_due.getTime())
-		).call(this._lineHelper.drawDottedLine.bind(this._lineHelper),
-			{
-				type: 'normal', start(object) {
-					if (!object.actual_due) {
-						return Math.max(object.target_start, today);
-					} else {
-						return object.actual_due
-					}
-				}, end(object) {
-					return object.target_due;
-				}
-			});
-
-		objects.filter(
-			object => object.target_due && object.actual_due && object.actual_due.getTime() > object.target_due.getTime()
-		).call(this._lineHelper.drawSolidLine.bind(this._lineHelper),
-			{
-				type: 'late', start(object) {
-					return object.target_due;
-				}, end(object) {
-					return object.actual_due;
-				}
-			});
-
-		objects.filter(
-			object => object.actual_start && object.target_start && object.actual_start.getTime() < object.target_start.getTime()
-		).call(this._lineHelper.drawSolidLine.bind(this._lineHelper),
-			{
-				type: 'early', start(object) {
-					return object.actual_start;
-				}, end(object) {
-					return object.target_start;
-				}
-			});
-
-		objects.attr('y', function() {
-			return (gantt._objectHeight - this.getBBox().height - 0.5) / 2;
-		});
+		cells.filter(cell => {
+				 return cell.targetActual && cell.targetActual.hasWorkLog === 'false';
+			 })
+			 .append('div')
+			 .attr('class', 'worklog')
+			 .style('height', `${lineHeight}px`)
+			 .style('width', `${gantt._cellWidth}px`)
+			 .style('top', `${lineDistance + lineHeight / 2}px`)
+			 .classed('worklog--normal', cell => cell.targetActual.relativePositionToTargetRange === 'within')
+			 .classed('worklog--late', cell => cell.targetActual.relativePositionToTargetRange === 'after')
+			 .classed('worklog--early', cell => cell.targetActual.relativePositionToTargetRange === 'before');
 	}
 
 }

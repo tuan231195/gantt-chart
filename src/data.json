@@ -1,221 +1,417 @@
 [
   {
-    "id": 1,
     "table": "job",
-    "planned_start": "2018-02-26",
-    "planned_due": "2018-06-02",
-    "predicted_start": "2018-02-26",
-    "predicted_due": "2018-06-02"
+    "cells": [
+      {
+        "ganttChartDateOffset": 0,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "start"
+        }
+      },
+      {
+        "ganttChartDateOffset": 1,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 2,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 3,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 4,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 5,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 6,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 7,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 8,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 9,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 10,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 11,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "end"
+        }
+      }
+    ]
   },
   {
-    "id": 1,
     "table": "milestone",
-    "planned_start": "2018-03-03",
-    "planned_due": "2018-03-31",
-    "target_start": "2018-03-03",
-    "target_due": "2018-03-31",
-    "predicted_start": "2018-03-03",
-    "predicted_due": "2018-03-31",
-    "actual_start": "2018-03-01",
-    "actual_due": "2018-04-03",
-    "days": [
-      "2018-02-27",
-      "2018-03-02",
-      "2018-03-03",
-      "2018-03-04",
-      "2018-03-05",
-      "2018-03-06",
-      "2018-03-07",
-      "2018-03-08",
-      "2018-03-09",
-      "2018-03-10",
-      "2018-03-11",
-      "2018-03-12",
-      "2018-03-13",
-      "2018-03-15",
-      "2018-03-16",
-      "2018-03-17",
-      "2018-03-18",
-      "2018-03-19",
-      "2018-03-20",
-      "2018-03-21",
-      "2018-03-22",
-      "2018-03-23",
-      "2018-03-24",
-      "2018-03-26",
-      "2018-03-27",
-      "2018-03-28",
-      "2018-03-29",
-      "2018-04-02",
-      "2018-04-02"
+    "cells": [
+      {
+        "ganttChartDateOffset": 1,
+        "plannedPredicted": {
+          "plannedType": "start"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "before",
+          "borderType": "start"
+        }
+      },
+      {
+        "ganttChartDateOffset": 2,
+        "plannedPredicted": {
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "before",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 3,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": true,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "within",
+          "borderType": "start"
+        }
+      },
+      {
+        "ganttChartDateOffset": 4,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": true,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "within",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 5,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": true,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "within",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 6,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "after",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 7,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "after",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 8,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "after",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 9,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "end"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "after",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 10,
+        "plannedPredicted": {
+          "predictedType": "late"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "after",
+          "borderType": "end"
+        }
+      }
     ]
   },
   {
-    "id": 2,
     "table": "milestone",
-    "planned_start": "2018-03-06",
-    "planned_due": "2018-04-15",
-    "target_start": "2018-03-06",
-    "target_due": "2018-04-15",
-    "predicted_start": "2018-03-06",
-    "predicted_due": "2018-04-15",
-    "actual_start": "2018-03-08",
-    "actual_due": "2018-04-10",
-    "days": [
-      "2018-03-08",
-      "2018-03-09",
-      "2018-03-10",
-      "2018-03-11",
-      "2018-03-12",
-      "2018-03-13",
-      "2018-03-14",
-      "2018-03-15",
-      "2018-03-16",
-      "2018-03-17",
-      "2018-03-18",
-      "2018-03-19",
-      "2018-03-20",
-      "2018-03-21",
-      "2018-03-22",
-      "2018-03-23",
-      "2018-03-29",
-      "2018-03-30",
-      "2018-03-31",
-      "2018-04-01",
-      "2018-04-02",
-      "2018-04-03",
-      "2018-04-04",
-      "2018-04-05",
-      "2018-04-06",
-      "2018-04-07",
-      "2018-04-08"
+    "cells": [
+      {
+        "ganttChartDateOffset": 4,
+        "plannedPredicted": {
+          "predictedType": "early"
+        },
+        "targetActual": {
+          "hasWorkLog": true,
+          "relativePositionToTargetRange": "before",
+          "relativePositionToActualRange": "within",
+          "borderType": "start"
+        }
+      },
+      {
+        "ganttChartDateOffset": 5,
+        "plannedPredicted": {
+          "predictedType": "early"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "before",
+          "relativePositionToActualRange": "within",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 6,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "start"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "within",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 7,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": true,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "within",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 8,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": true,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "within",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 9,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "after",
+          "borderType": "end"
+        }
+      },
+      {
+        "ganttChartDateOffset": 10,
+        "plannedPredicted": {
+          "plannedType": "end"
+        }
+      }
     ]
   },
   {
-    "id": 3,
-    "table": "milestone",
-    "planned_start": "2018-03-17",
-    "planned_due": "2018-04-17",
-    "target_start": "2018-03-17",
-    "target_due": "2018-04-17",
-    "predicted_start": "2018-03-17",
-    "predicted_due": "2018-04-20",
-    "actual_start": "2018-03-18",
-    "days": [
-      "2018-03-18",
-      "2018-03-19",
-      "2018-03-20",
-      "2018-03-21",
-      "2018-03-22",
-      "2018-03-24",
-      "2018-03-25",
-      "2018-03-26",
-      "2018-03-27",
-      "2018-03-28",
-      "2018-03-29",
-      "2018-03-30",
-      "2018-03-31",
-      "2018-04-01",
-      "2018-04-02",
-      "2018-04-03",
-      "2018-04-05",
-      "2018-04-06",
-      "2018-04-07",
-      "2018-04-08",
-      "2018-04-09",
-      "2018-04-10",
-      "2018-04-11"
+    "table": "task",
+    "cells": [
+      {
+        "ganttChartDateOffset": 0,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "start"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "before",
+          "borderType": "start"
+        }
+      },
+      {
+        "ganttChartDateOffset": 1,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "before",
+          "borderType": "middle"
+        }
+      },
+      {
+        "ganttChartDateOffset": 2,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": true,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "within",
+          "borderType": "start"
+        }
+      },
+      {
+        "ganttChartDateOffset": 3,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": true,
+          "relativePositionToTargetRange": "within",
+          "relativePositionToActualRange": "within",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 4,
+        "plannedPredicted": {
+          "predictedType": "within",
+          "plannedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": true,
+          "relativePositionToTargetRange": "after",
+          "relativePositionToActualRange": "within",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 5,
+        "plannedPredicted": {
+          "plannedType": "end",
+          "predictedType": "within"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "after",
+          "relativePositionToActualRange": "within",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 6,
+        "plannedPredicted": {
+          "predictedType": "late"
+        },
+        "targetActual": {
+          "hasWorkLog": false,
+          "relativePositionToTargetRange": "after",
+          "relativePositionToActualRange": "within",
+          "borderType": "within"
+        }
+      },
+      {
+        "ganttChartDateOffset": 7,
+        "plannedPredicted": {
+          "predictedType": "late"
+        },
+        "targetActual": {
+          "hasWorkLog": true,
+          "relativePositionToTargetRange": "after",
+          "relativePositionToActualRange": "within",
+          "borderType": "end"
+        }
+      }
     ]
-  },
-  {
-    "id": 3,
-    "table": "task",
-    "planned_start": "2018-03-25",
-    "planned_due": "2018-04-25",
-    "target_start": "2018-03-25",
-    "target_due": "2018-04-25",
-    "predicted_start": "2018-03-17",
-    "predicted_due": "2018-04-20",
-    "actual_start": "2018-03-25",
-    "days": [
-      "2018-03-25",
-      "2018-03-26",
-      "2018-03-27",
-      "2018-03-28",
-      "2018-03-29",
-      "2018-03-30",
-      "2018-03-31",
-      "2018-04-01",
-      "2018-04-02",
-      "2018-04-03",
-      "2018-04-04",
-      "2018-04-05",
-      "2018-04-06",
-      "2018-04-07",
-      "2018-04-08",
-      "2018-04-09",
-      "2018-04-10",
-      "2018-04-11"
-    ]
-  },
-  {
-    "id": 4,
-    "table": "task",
-    "planned_start": "2018-04-25",
-    "planned_due": "2018-05-25",
-    "target_start": "2018-04-25",
-    "target_due": "2018-05-28",
-    "predicted_start": "2018-04-25",
-    "predicted_due": "2018-05-28"
-  },
-  {
-    "id": 41,
-    "table": "task",
-    "planned_start": "2018-04-25",
-    "planned_due": "2018-05-25",
-    "target_start": "2018-04-26",
-    "target_due": "2018-05-28",
-    "predicted_start": "2018-04-25",
-    "predicted_due": "2018-05-25"
-  },
-  {
-    "id": 43,
-    "table": "task",
-    "planned_start": "2018-04-25",
-    "planned_due": "2018-05-25",
-    "target_start": "2018-04-27",
-    "target_due": "2018-05-28",
-    "predicted_start": "2018-04-25",
-    "predicted_due": "2018-05-25"
-  },
-  {
-    "id": 45,
-    "table": "task",
-    "planned_start": "2018-04-25",
-    "planned_due": "2018-05-25",
-    "target_start": "2018-04-24",
-    "target_due": "2018-05-28",
-    "predicted_start": "2018-04-25",
-    "predicted_due": "2018-05-25"
-  },
-  {
-    "id": 12,
-    "table": "task",
-    "planned_start": "2018-04-25",
-    "planned_due": "2018-05-25",
-    "target_start": "2018-04-29",
-    "target_due": "2018-05-28",
-    "predicted_start": "2018-04-25",
-    "predicted_due": "2018-05-25"
-  },
-  {
-    "id": 89,
-    "table": "task",
-    "planned_start": "2018-04-25",
-    "planned_due": "2018-05-25",
-    "target_start": "2018-04-21",
-    "target_due": "2018-05-28",
-    "predicted_start": "2018-04-25",
-    "predicted_due": "2018-05-24"
   }
 ]

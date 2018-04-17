@@ -1,126 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.calendar-days {
+    overflow: scroll;
+    white-space: nowrap;
+    position: relative;
+}
+
+.month {
+    display: inline-block;
+    text-align: center;
+}
+
+.day {
+    display: inline-block;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.day__text {
+    padding-top: 10px;
+    box-sizing: border-box;
+    border: 1px solid #d0d0d0;
+    border-top: none;
+    border-right: none;
+}
+
+.month:last-of-type .day:last-child .day__text {
+    border-right: 1px solid #d0d0d0;
+}
+
+.day.day--today .day__text {
+    background-color: #5f5f5f;
+    color: white;
+    box-sizing: padding-box;
+    border: none;
+}
+
+.day.day--today {
+    border-left: 1px solid black;
+}
+
+.day.day--weekends {
+    background-color: #ecebec;
+}
+
+.day:nth-of-type(even) {
+    background-color: #f2f2f2;
+}
+
+.normal-text {
+    font-size: 11px;
+}
+
+.month__text {
+    border: 1px solid #d0d0d0;
+    border-right: none;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.month__text:last-of-type {
+    border-right: 1px solid #d0d0d0;
+}
+
 .container {
     width: 80%;
     margin: 0 auto;
 }
 
-.month {
-    stroke-width: 1px;
-    stroke: #d0d0d0;
-    fill: #f9f9f9;
+.planned {
+    display: inline-block;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
-.planned-line {
-    fill: none;
-    stroke-width: 1px;
-    stroke: black;
+.planned--start {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-left: 1px solid black;
 }
 
-.predicted-line {
-    stroke-width: 3px;
-    stroke-dasharray: 1, 10;
-    stroke-linecap: round;
-    stroke-dashoffset: 15px;
+.planned--end {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-right: 1px solid black;
 }
 
-.predicted-line--normal {
-    stroke: darkgrey;
+.predicted {
+    height: 5px;
+    position: absolute;
+    background-image: url(dot-20x20.svg);
 }
 
-.predicted-line--early {
-    stroke: #6cd6ff;
+.predicted--early {
+    background-image: url(dot-blue-20x20.svg);
 }
 
-.predicted-line--late {
-    stroke: orange;
+.predicted--late {
+    background-image: url(dot-yellow-20x20.svg);
 }
 
-#chart-area {
-    overflow: scroll;
+.target {
+    position: absolute;
+    border: 1px dashed #25a84a;
+    border-right-width: 0;
+    border-left-width: 0;
+    box-sizing: border-box;
 }
 
-
-.day__column {
-    fill: #f9f9f9;
-    stroke-width: 1px;
-    stroke: #d0d0d0;
+.target--late {
+    border-color: orange;
 }
 
-.day:nth-of-type(even) .day__column {
-    fill: #f2f2f2;
+.actual {
+    position: absolute;
+    border: 1px solid #25a84a;
+    border-right-width: 0;
+    border-left-width: 0;
+    box-sizing: border-box;
 }
 
-.day.day--today .day__cell {
-    fill: #5f5f5f;
+.actual--late {
+    border-color: #df908e;
 }
 
-.day.day--today text {
-    fill: white;
+.actual--early {
+    border-color: #63abdf;
 }
 
-.day .day__column.day__column--weekends {
-    fill: #ecebec;
+.object-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
-.normal-text {
-    text-anchor: middle;
-    font-size: 11px;
+.cell-inner {
+    display: flex;
+    align-items: center;
+}
+.first-line {
+    position: relative;
 }
 
-.today-line {
-    stroke: black;
-    stroke-width: 1px;
+.second-line {
+    position: relative;
+}
+.has-border-left {
+    border-left-width: 1px;
 }
 
-.object {
-    transform: translate(0, 25px);
+.has-border-right {
+    border-right-width: 1px;
 }
 
-.dotted-line {
-    fill: none;
-}
-.dotted-line--late {
-    stroke: orange;
-    stroke-width: 2px;
-    stroke-dasharray: 5px, 4px;
-}
-
-.dotted-line--normal {
-    stroke: #7cc36c;
-    stroke-width: 2px;
-    stroke-dasharray: 5px, 4px;
+.object-group {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
-.solid-line {
-    fill: none;
+.worklog {
+    position: absolute;
 }
 
-.solid-line-late {
-    stroke: #df908e;
-    stroke-width: 2px;
+.worklog--early {
+    background-color: #6cd6ff;
 }
 
-.solid-line--normal {
-    stroke: #7cc36c;
-    stroke-width: 2px;
+.worklog--normal {
+    background-color: #7cc36c;
 }
 
-.solid-line--early {
-    stroke: #63abdf;
-    stroke-width: 2px;
+.worklog--late {
+    background-color: #f4bab9;
 }
 
-.work-log {
-    fill: none;
-}
-
-.work-log--early {
-    fill: #d1eefd;
-}
-
-.work-log--normal {
-    fill: #cae6d0;
-}
-
-.work-log--late {
-    fill: #f4bab9;
+.cell {
+    position: absolute;
 }
